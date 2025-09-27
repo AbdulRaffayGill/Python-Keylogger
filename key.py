@@ -2,7 +2,6 @@ import keyboard
 import os
 import register
 import sys
-import tempfile
 script_path=sys.executable
 script_path='"'+script_path+'"'
 script_path_2='C:\\Users\\'+os.popen("echo %USERNAME%").read().strip('\n')+'\\AppData\\Local\\Temp'
