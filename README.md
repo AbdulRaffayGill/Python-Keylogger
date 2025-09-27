@@ -1,3 +1,7 @@
+![Logo](plut.ico)
+
+
+
 # Plutonium
 A Python Keylogger that when triggered , record every keystrokes of the victim , until Esc is pressed.
 Once Esc is pressed, it stops , create a new text file based on the name of current user, stores the recorded keystrokes in it and upload it to airforshare.com
